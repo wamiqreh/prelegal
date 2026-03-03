@@ -11,9 +11,23 @@ A platform to discover, book, and manage local events and workshops. This reposi
 
 ## Getting started
 
-1. See AGENTS.md for the product vision, core features, and business model.
-2. Open the repository in your IDE to explore the code and documentation.
-3. Implementation-specific setup instructions (language, framework, and run commands) will be added as the project evolves.
+Recommended: start services with Docker:
+
+1. docker compose up --build -d
+   - SQL Server and backend will be started. Backend listens on http://localhost:5000.
+
+Run services individually for development:
+
+- Backend:
+  1. cd backend
+  2. dotnet run
+
+- Frontend:
+  1. cd frontend
+  2. npm install
+  3. npm run dev
+
+API sample endpoint: GET /api/events (returns sample events from the database).
 
 ## Contributing
 
