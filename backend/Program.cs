@@ -21,8 +21,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => Results.Ok(new { message = "Backend running" }))
-   .WithName("Root");
+app.MapGet("/health", () => Results.Ok(new { message = "Backend running" }))
+   .WithName("Health");
 
 app.MapGet("/api/events", async (AppDbContext db) =>
     await db.Events.AsNoTracking().ToListAsync())
@@ -60,5 +60,18 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
 }
+
+// Apply pending EF Core migrations at startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
+// Serve static files and fallback to index.html for SPA
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
