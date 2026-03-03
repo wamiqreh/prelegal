@@ -1,0 +1,44 @@
+# Node / React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*.local
+/build
+/dist
+/out
+/coverage
+/.next
+.DS_Store
+
+# Lock files (optional)
+package-lock.json
+yarn.lock
+
+# .NET Core / Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+TestResults/
+*.ncb
+*.opensdf
+*.VC.db
+*.pdb
+*.dll
+*.exe
+*.log
+
+# Rider / IDE
+.idea/
+.vscode/
+
+# Misc
+*.log
+*.db
+
